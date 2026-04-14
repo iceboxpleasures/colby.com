@@ -10,7 +10,10 @@
   --text: #1a1a18;
   --text-muted: #6b6b66;
   --border: #e4e2de;
+<<<<<<< HEAD
   --accent: #2d2d2a;
+=======
+>>>>>>> aa96856303441630d717483a82a937634fc1baec
   --hover-bg: #f0ede9;
   --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -86,7 +89,10 @@ footer { margin-top: 3rem; font-size: 0.8125rem; color: var(--text-muted); text-
     --text: #e8e6e1;
     --text-muted: #7a7871;
     --border: #2e2e2b;
+<<<<<<< HEAD
     --accent: #d4d1cb;
+=======
+>>>>>>> aa96856303441630d717483a82a937634fc1baec
     --hover-bg: #242422;
   }
 }
