@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Colby Kyes</title>
+  <meta name="description" content="About Colby Kyes — writer and thinker.">
+  <link rel="canonical" href="https://colbiosity.com/about.html">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="has-nav">
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Colby Kyes</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+  </nav>
+
+  <main class="about-main">
+    <header>
+      <!-- Replace the placeholder below with an actual photo:
+           1. Add your photo to the same folder as this file (e.g. "headshot.jpg")
+           2. Change the div below to: <img src="headshot.jpg" alt="Colby Kyes" class="about-photo">
+      -->
+      <div class="about-photo-placeholder">Add your photo here</div>
+      <h1>Colby Kyes</h1>
+    </header>
+
+    <section class="about-bio">
+      <!-- Replace this with your own bio -->
+      <p>Hi, I'm Colby — a writer and thinker based in [your city]. I write about [your topics] on Substack and work in [your field].</p>
+      <p>This is where you can add more about your background, what drives you, what you're working on, or anything else you'd like the world to know.</p>
+    </section>
+
+    <nav class="links" aria-label="Social links">
+      <a href="https://substack.com/@colbytown" class="link-card" target="_blank" rel="noopener noreferrer">
+        <span class="link-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+          </svg>
+        </span>
+        <span class="link-label">Read my Substack</span>
+        <span class="link-arrow" aria-hidden="true">↗</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/ckyes/" class="link-card" target="_blank" rel="noopener noreferrer">
+        <span class="link-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </span>
+        <span class="link-label">Connect on LinkedIn</span>
+        <span class="link-arrow" aria-hidden="true">↗</span>
+      </a>
+    </nav>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Colby Kyes</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
