@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music — Colby Kyes</title>
+  <meta name="description" content="Music by Colby Kyes.">
+  <meta name="author" content="Colby Kyes">
+  <link rel="canonical" href="https://colbiosity.com/music.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colbiosity.com/music.html">
+  <meta property="og:title" content="Music — Colby Kyes">
+  <meta property="og:description" content="Music by Colby Kyes.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Music — Colby Kyes">
+  <meta name="twitter:description" content="Music by Colby Kyes.">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://fast.wistia.com/assets/external/channel.js" async></script>
+  <link rel="stylesheet" href="https://fast.wistia.com/embed/channel/project/zzxh954nvb/font.css">
+  <style>
+    .music-body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
+    }
+
+    .music-main {
+      flex: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 7rem 2.5rem 4rem;
+    }
+
+    .music-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1.5px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+    }
+
+    .music-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .music-subtitle {
+      font-style: italic;
+      font-size: 0.9375rem;
+      color: var(--muted);
+    }
+
+    .wistia-wrapper {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="music-body">
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Colby Kyes</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="music.html">Music</a>
+    </div>
+  </nav>
+
+  <main class="music-main">
+    <header class="music-header">
+      <h1 class="music-title">Music</h1>
+    </header>
+
+    <div class="wistia-wrapper">
+      <div class="wistia_channel wistia_async_zzxh954nvb mode=inline" style="min-height:100vh;position:relative;width:100%;"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Colby Kyes</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
