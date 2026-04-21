@@ -21,73 +21,25 @@
   <main class="gallery-main">
     <header class="gallery-header">
       <h1 class="gallery-title">Gallery</h1>
-      <span class="gallery-subtitle">Add your photos below</span>
+      <span class="gallery-subtitle" id="gallery-count"></span>
     </header>
 
-    <!--
-      HOW TO ADD PHOTOS:
-      1. Put your image files in the same folder (e.g. photo1.jpg)
-      2. Replace a placeholder block with:
-         <div class="masonry-item">
-           <img src="photo1.jpg" alt="Description">
-         </div>
-    -->
-    <div class="masonry-grid">
-
-      <div class="masonry-item">
-        <div class="gallery-placeholder">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
-            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
-          </svg>
-          photo
-        </div>
+    <div class="masonry-grid" id="gallery-grid">
+      <!-- Images are loaded dynamically from R2 via the Worker -->
+      <div class="gallery-loading" id="gallery-loading">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+        Loading photos…
       </div>
+    </div>
 
-      <div class="masonry-item" style="margin-top: 2rem;">
-        <div class="gallery-placeholder" style="min-height:240px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
-            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
-          </svg>
-          photo
-        </div>
-      </div>
+    <div class="gallery-empty" id="gallery-empty" style="display:none;">
+      <p>No photos yet — add some to your R2 bucket and they'll appear here.</p>
+    </div>
 
-      <div class="masonry-item">
-        <div class="gallery-placeholder" style="min-height:220px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
-            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
-          </svg>
-          photo
-        </div>
-      </div>
-
-      <div class="masonry-item">
-        <div class="gallery-placeholder" style="min-height:260px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
-            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
-          </svg>
-          photo
-        </div>
-      </div>
-
-      <div class="masonry-item" style="margin-top: -1rem;">
-        <div class="gallery-placeholder" style="min-height:180px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
-            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
-          </svg>
-          photo
-        </div>
-      </div>
-
-      <div class="masonry-item">
-        <div class="gallery-placeholder" style="min-height:300px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
-            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
-          </svg>
-          photo
-        </div>
-      </div>
-
+    <div class="gallery-error" id="gallery-error" style="display:none;">
+      <p>Couldn't load photos. Make sure the Worker is deployed and the bucket binding is set up.</p>
     </div>
   </main>
 
@@ -95,8 +47,148 @@
     <p>&copy; <span id="year"></span> Colby Kyes</p>
   </footer>
 
+  <style>
+    .gallery-loading,
+    .gallery-empty,
+    .gallery-error {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      min-height: 240px;
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .gallery-loading svg {
+      animation: spin 1.4s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .gallery-error { color: #b55; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: oklch(10% 0.01 55 / 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9000;
+      cursor: zoom-out;
+      padding: 2rem;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .lightbox.open { opacity: 1; }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 90dvh;
+      object-fit: contain;
+      border: 1px solid oklch(40% 0.02 55);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      color: oklch(80% 0.02 55);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+      background: none;
+      border: none;
+      padding: 0.25rem 0.5rem;
+    }
+  </style>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const WORKER_URL = 'https://colbywebsite.crkyes.workers.dev';
+
+    const grid    = document.getElementById('gallery-grid');
+    const loading = document.getElementById('gallery-loading');
+    const empty   = document.getElementById('gallery-empty');
+    const error   = document.getElementById('gallery-error');
+    const count   = document.getElementById('gallery-count');
+
+    // ── Lightbox ───────────────────────────────────────────────────
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = '<button class="lightbox-close" aria-label="Close">✕</button><img>';
+    document.body.appendChild(lightbox);
+
+    const lbImg = lightbox.querySelector('img');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { lbImg.src = ''; }, 200);
+    }
+
+    lightbox.addEventListener('click', e => {
+      if (e.target !== lbImg) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ── Fetch & render ─────────────────────────────────────────────
+    async function loadGallery() {
+      try {
+        const res = await fetch(`${WORKER_URL}/list`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const images = await res.json();
+
+        loading.style.display = 'none';
+
+        if (images.length === 0) {
+          empty.style.display = 'flex';
+          return;
+        }
+
+        count.textContent = `${images.length} photo${images.length !== 1 ? 's' : ''}`;
+
+        images.forEach(({ key, url }) => {
+          const item = document.createElement('div');
+          item.className = 'masonry-item';
+
+          const img = document.createElement('img');
+          img.src = url;
+          img.alt = key.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          img.style.cursor = 'zoom-in';
+
+          img.addEventListener('click', () => openLightbox(url, img.alt));
+
+          item.appendChild(img);
+          grid.appendChild(item);
+        });
+
+      } catch (err) {
+        console.error('Gallery load error:', err);
+        loading.style.display = 'none';
+        error.style.display = 'flex';
+      }
+    }
+
+    loadGallery();
   </script>
 </body>
 </html>

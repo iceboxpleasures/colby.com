@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colby Kyes</title>
+  <meta name="description" content="Colby Kyes — writer and thinker. Cook your own food.">
+  <meta name="author" content="Colby Kyes">
+  <link rel="canonical" href="https://colbiosity.com">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colbiosity.com">
+  <meta property="og:title" content="Colby Kyes">
+  <meta property="og:description" content="Colby Kyes — writer and thinker. Cook your own food.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Colby Kyes">
+  <meta name="twitter:description" content="Colby Kyes — writer and thinker. Cook your own food.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Colby Kyes",
+    "url": "https://colbiosity.com",
+    "sameAs": [
+      "https://substack.com/@colbytown",
+      "https://www.linkedin.com/in/ckyes/"
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Tweaks defaults */
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "accentColor": "#c58026",
+      "photoVisible": true,
+      "grainOpacity": 0.05
+    }/*EDITMODE-END*/;
+  </style>
+</head>
+<body class="home-body">
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Colby Kyes</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+  </nav>
+
+  <main class="home-hero">
+    <hr class="hero-rule">
+
+    <div class="hero-top">
+      <div class="hero-heading">
+        <h1 class="hero-name">Colby<br>Kyes</h1>
+        <p class="hero-tagline">Cook your own food.</p>
+      </div>
+      <img
+        src="headshot.jpeg"
+        alt="Colby Kyes"
+        class="hero-photo"
+        id="heroPhoto"
+      >
+    </div>
+
+    <hr class="hero-rule-2">
+
+    <nav class="link-rows" aria-label="Links">
+
+      <a href="https://substack.com/@colbytown" class="link-row" target="_blank" rel="noopener noreferrer">
+        <div class="link-row-inner">
+          <span class="link-row-label">Substack</span>
+          <span class="link-row-desc">Essays on sociology, politics &amp; tech</span>
+        </div>
+        <span class="link-row-arrow">↗</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/ckyes/" class="link-row" target="_blank" rel="noopener noreferrer">
+        <div class="link-row-inner">
+          <span class="link-row-label">LinkedIn</span>
+          <span class="link-row-desc">Customer success &amp; more</span>
+        </div>
+        <span class="link-row-arrow">↗</span>
+      </a>
+
+      <a href="about.html" class="link-row">
+        <div class="link-row-inner">
+          <span class="link-row-label">About</span>
+          <span class="link-row-desc">Metro Boston. Too many hobbies.</span>
+        </div>
+        <span class="link-row-arrow">→</span>
+      </a>
+
+      <a href="gallery.html" class="link-row">
+        <div class="link-row-inner">
+          <span class="link-row-label">Gallery</span>
+          <span class="link-row-desc">Photos</span>
+        </div>
+        <span class="link-row-arrow">→</span>
+      </a>
+
+    </nav>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Colby Kyes</p>
+  </footer>
+
+  <!-- Tweaks panel -->
+  <div id="tweaks-panel" style="display:none; position:fixed; bottom:1.5rem; right:1.5rem; background: oklch(92% 0.018 65); border: 1px solid oklch(70% 0.03 62); padding: 1.25rem 1.5rem; width: 240px; font-family: 'Lora', Georgia, serif; font-size: 0.8125rem; z-index: 10000; box-shadow: 0 4px 24px oklch(22% 0.03 55 / 0.12);">
+    <p style="font-family: 'Playfair Display', serif; font-weight:700; margin-bottom:1rem; font-size:0.9375rem;">Tweaks</p>
+
+    <label style="display:block; margin-bottom:0.75rem; color: oklch(52% 0.05 58);">
+      Accent color
+      <input type="color" id="tw-accent" value="#5C4A32" style="display:block; margin-top:0.3rem; width:100%; height:28px; border:1px solid oklch(70% 0.03 62); background:none; cursor:pointer;">
+    </label>
+
+    <label style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem; color: oklch(52% 0.05 58); cursor:pointer;">
+      <input type="checkbox" id="tw-photo" checked> Show headshot
+    </label>
+
+    <label style="display:block; color: oklch(52% 0.05 58);">
+      Grain intensity
+      <input type="range" id="tw-grain" min="0" max="0.12" step="0.005" value="0.045" style="display:block; width:100%; margin-top:0.3rem;">
+    </label>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Tweaks ──
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"accentColor":"#5C4A32","photoVisible":true,"grainOpacity":0.045}/*EDITMODE-END*/;
+
+    function applyTweaks(t) {
+      document.documentElement.style.setProperty('--accent', t.accentColor);
+      document.getElementById('heroPhoto').style.display = t.photoVisible ? '' : 'none';
+      document.body.style.setProperty('--grain-opacity', t.grainOpacity);
+      // update grain overlay opacity via CSS var
+      const style = document.getElementById('grain-style') || (() => {
+        const s = document.createElement('style');
+        s.id = 'grain-style';
+        document.head.appendChild(s);
+        return s;
+      })();
+      style.textContent = `body::after { opacity: ${t.grainOpacity}; }`;
+    }
+
+    applyTweaks(TWEAK_DEFAULTS);
+
+    window.addEventListener('message', e => {
+      if (e.data?.type === '__activate_edit_mode') {
+        document.getElementById('tweaks-panel').style.display = 'block';
+      }
+      if (e.data?.type === '__deactivate_edit_mode') {
+        document.getElementById('tweaks-panel').style.display = 'none';
+      }
+    });
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+    document.getElementById('tw-accent').addEventListener('input', function() {
+      const t = { accentColor: this.value, photoVisible: document.getElementById('tw-photo').checked, grainOpacity: parseFloat(document.getElementById('tw-grain').value) };
+      applyTweaks(t);
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { accentColor: this.value } }, '*');
+    });
+    document.getElementById('tw-photo').addEventListener('change', function() {
+      const t = { accentColor: document.getElementById('tw-accent').value, photoVisible: this.checked, grainOpacity: parseFloat(document.getElementById('tw-grain').value) };
+      applyTweaks(t);
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { photoVisible: this.checked } }, '*');
+    });
+    document.getElementById('tw-grain').addEventListener('input', function() {
+      const t = { accentColor: document.getElementById('tw-accent').value, photoVisible: document.getElementById('tw-photo').checked, grainOpacity: parseFloat(this.value) };
+      applyTweaks(t);
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { grainOpacity: parseFloat(this.value) } }, '*');
+    });
+  </script>
+</body>
+</html>
