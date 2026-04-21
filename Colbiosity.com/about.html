@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Colby Kyes</title>
+  <meta name="description" content="About Colby Kyes — writer and thinker based in Metro Boston.">
+  <link rel="canonical" href="https://colbiosity.com/about.html">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="about-body">
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Colby Kyes</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+  </nav>
+
+  <main class="about-main">
+    <header class="about-header">
+      <div>
+        <h1 class="about-title">About<br>Colby</h1>
+        <p class="about-subtitle">Metro Boston &mdash; writer, thinker, cook.</p>
+      </div>
+      <img src="headshot.jpeg" alt="Colby Kyes" class="about-photo">
+    </header>
+
+    <section class="about-bio">
+      <p>Hi, I'm Colby &mdash; a writer and thinker based in Metro Boston. I write about Sociology, Politics, and Technology on Substack and work in Customer Success.</p>
+      <p>I also have too many hobbies.</p>
+    </section>
+
+    <p class="about-links-heading">Find me online</p>
+    <nav class="link-rows about-link-rows" aria-label="Social links">
+
+      <a href="https://substack.com/@colbytown" class="link-row" target="_blank" rel="noopener noreferrer">
+        <div class="link-row-inner">
+          <span class="link-row-label">Substack</span>
+          <span class="link-row-desc">Essays on sociology, politics &amp; tech</span>
+        </div>
+        <span class="link-row-arrow">↗</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/ckyes/" class="link-row" target="_blank" rel="noopener noreferrer">
+        <div class="link-row-inner">
+          <span class="link-row-label">LinkedIn</span>
+          <span class="link-row-desc">Customer success &amp; professional work</span>
+        </div>
+        <span class="link-row-arrow">↗</span>
+      </a>
+
+    </nav>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Colby Kyes</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Colby Kyes</title>
+  <meta name="description" content="Photo gallery — Colby Kyes">
+  <link rel="canonical" href="https://colbiosity.com/gallery.html">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="gallery-body">
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Colby Kyes</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+  </nav>
+
+  <main class="gallery-main">
+    <header class="gallery-header">
+      <h1 class="gallery-title">Gallery</h1>
+      <span class="gallery-subtitle">Add your photos below</span>
+    </header>
+
+    <!--
+      HOW TO ADD PHOTOS:
+      1. Put your image files in the same folder (e.g. photo1.jpg)
+      2. Replace a placeholder block with:
+         <div class="masonry-item">
+           <img src="photo1.jpg" alt="Description">
+         </div>
+    -->
+    <div class="masonry-grid">
+
+      <div class="masonry-item">
+        <div class="gallery-placeholder">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
+          </svg>
+          photo
+        </div>
+      </div>
+
+      <div class="masonry-item" style="margin-top: 2rem;">
+        <div class="gallery-placeholder" style="min-height:240px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
+          </svg>
+          photo
+        </div>
+      </div>
+
+      <div class="masonry-item">
+        <div class="gallery-placeholder" style="min-height:220px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
+          </svg>
+          photo
+        </div>
+      </div>
+
+      <div class="masonry-item">
+        <div class="gallery-placeholder" style="min-height:260px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
+          </svg>
+          photo
+        </div>
+      </div>
+
+      <div class="masonry-item" style="margin-top: -1rem;">
+        <div class="gallery-placeholder" style="min-height:180px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
+          </svg>
+          photo
+        </div>
+      </div>
+
+      <div class="masonry-item">
+        <div class="gallery-placeholder" style="min-height:300px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
+            <path d="M21 3H3C2 3 1 4 1 5v14c0 1 1 2 2 2h18c1 0 2-1 2-2V5c0-1-1-2-2-2zm0 16H3V5h18v14zm-5-7l-3 3.7-2-2.4L8 17h8l-3.5-4.5z"/>
+          </svg>
+          photo
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Colby Kyes</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
